@@ -5,7 +5,7 @@
 subroutine calc_fpk_pbc(xpos, ypos, bx, by, tau0, len_x, len_y, FPK, Nmob, N)
 ! Solution based on Eqs (2.1.25a) and (2.1.25b) from Linyong Pang "A new O(N) method for
 ! modeling and simulating the behavior of a large number of dislocations in
-! anisotropic linear elastic media", PhD thesis, Stanford University, USA. 2001 
+! anisotropic linear elastic media", PhD thesis, Stanford University, USA. 2001
 implicit none
 integer, intent(in) :: N
 integer, intent(in) :: Nmob
@@ -102,7 +102,7 @@ do i=1, Nmob
         hx = x*x
         hy = y*y
         hh = hx + hy
-        hh = hh*hh
+        hh = hh*hh + 0.0001
         hbx = bx(j)
         hby = by(j)
         h11 = h11 - hbx*y*(3.d0*hx + hy)/hh

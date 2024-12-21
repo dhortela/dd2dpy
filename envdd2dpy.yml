@@ -1,0 +1,12 @@
+name: dd2dpy
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - numpy=2.0.0
+  - matplotlib=3.8.4
+  - scipy=1.14.0
+  - scikit-learn=1.5.0
+  - pytest=8.2.2
+  - jupyterlab=4.2.3
+  - gfortran=13.2.0
