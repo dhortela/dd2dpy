@@ -1,34 +1,30 @@
-load
-# pyLabDD
+# dd2dpy
 
-### Python Laboratory for Dislocation Dynamics
+### A python-based 2D dislocation dynamics code
 
-  - Author: Alexander Hartmaier
-  - Organization: ICAMS, Ruhr University Bochum, Germany
-  - Contact: <alexander.hartmaier@rub.de>
+  - Author: Daniel Hortelano-Roig
+  - Organization: University of Oxford, UK
+  - Contact: <daniel.hortelanoroig@gmail.com>
 
-Dislocation Dynamics (DD) is a numerical method for studying
-the evolution of a population of discrete dislocations in an elastic medium under mechanical loads. The pyLabDD package
-introduces a simple version of Dislocation Dynamics in 2-dimensional space to study 
-fundamental aspects of plastic deformation associated with the motion and mutual interaction of dislocations. Dislocations are considered as pure edge dislocations where the line direction is normal to the considered plane.
+Note that dd2dpy is built upon (and is an extension/modification of) [pyLabDD](https://github.com/AHartmaier/pyLabDD), which is a python-based code written by Alexander Hartmaier.
+
+Dislocation dynamics (DD) is a continuum model of material plasticity on the order of micrometres which treats dislocation line defects explicitly as discretised segments embedded within an elastic medium. The purpose of these models is to study the evolution of dislocations in materials and establish connections between this microscopic behaviour to macroscopic properties, such as stress-strain constitutive relationships.
+
+Compared to 3D DD codes, 2D DD is computationally faster and inherently flexible with respect to boundary conditions and the inclusion of microstructures, hence can be used to solve more complicated boundary value problems that may otherwise be inaccessible to 3D methods. In 2D DD, dislocations are modelled as infinitely long, straight, edge-type dislocations with line direction perpendicular to the plane of the simulation.
+
+dd2dpy is a 2D DD code originally developed for educational purposes, specifically for use in a summer school program. Amongst other things, it is capable of modelling Frank-Read sources and their nucleation, finite domains wherein dislocations are allowed to exit (ignoring image forces), and has the capacity to couple to FEM via the package [pyLabFEA](https://github.com/AHartmaier/pyLabFEA), which is also written by Alexander Hartmaier.
 
 ## Installation
 
-The pyLabDD package requires an [Anaconda](https://www.anaconda.com/products/individual) or [Miniconda](https://docs.conda.io/en/latest/miniconda.html) environment with a recent Python version. 
+The dd2dpy package requires an [Anaconda](https://www.anaconda.com/products/individual) or [Miniconda](https://docs.conda.io/en/latest/miniconda.html) environment with a recent Python version.
 
-The pyLabDD package can be installed directly from its GitHub repository with the following command
-
-```
-$ python -m pip install git+https://github.com/AHartmaier/pyLabDD.git
-```
-
-Alternatively, the repository can be cloned and installed locally. It is recommended to create a conda environment before installation. This can be done by the following the command line instructions
+The repository can be cloned and installed locally. It is recommended to create a conda environment before installation. This can be done by the following the command line instructions
 
 ```
-$ git clone https://github.com/AHartmaier/pyLabDD.git ./pyLabDD
-$ cd pyLabDD
-$ conda env create -f environment.yml  
-$ conda activate pylabdd
+$ git clone https://github.com/dhortela/dd2dpy.git ./dd2dpy
+$ cd dd2dpy
+$ conda env create -f envdd2dpy.yml  
+$ conda activate dd2dpy
 $ python -m pip install . [--user]
 ```
 
@@ -45,7 +41,8 @@ import pylabdd as dd
 ```
 
 ## Speedup with Fortran subroutines
-The subroutines to calculate the Peach-Koehler (PK) force on dislocations are rather time consuming. A Fortran implementation of these subroutines can bring a considerable seepdup of the simulation. To install these faster subroutines, a Fortran compiler is required, e.g. gfortran. On MacOS, this can be achived by installing the command line tools with `xcode-select --install`. The embedding of the Fortran subroutines into Python is accomplished with the leightweight Fortran wrapper [fmodpy](https://pypi.org/project/fmodpy/).
+
+The subroutines to calculate the Peach-Koehler (PK) force on dislocations are rather time consuming. A Fortran implementation of these subroutines can bring a considerable seepdup of the simulation. To install these faster subroutines, a Fortran compiler is required, e.g. gfortran. On MacOS, this can be achived by installing the command line tools with `xcode-select --install`. The embedding of the Fortran subroutines into Python is accomplished with the lightweight Fortran wrapper [fmodpy](https://pypi.org/project/fmodpy/).
 
 To activate the Fortran subroutines, issue the command
 
@@ -62,38 +59,29 @@ $ python
 
 This will inform you if the standard Python or the faster Fortran subroutines to calculate the PK force will be used.
 
-## Jupyter notebooks
+## Tutorials
 
-pyLabDD is conveniently used with Jupyter notebooks. 
-Available notebooks with tutorials on the dislocation dynamics method and the Taylor hardening model are contained in the subfolder `notebooks`. 
+In the subfolder `notebooks`, tutorials are available via Jupyter notebooks on how to use dd2dpy, the dislocation dynamics method, and the Taylor hardening model.
 
-The Jupyter notebooks of the pyLabDD tutorials are also available on Binder 
-[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/AHartmaier/pyLabDD.git/main)
-
-
-## Contributions
-
-Contributions to the pyLabDD package are highly welcome, either in form of new 
-notebooks with application examples or tutorials, or in form of new functionalities 
-to the Python code. Furthermore, bug reports or any comments on possible improvements of 
-the code or its documentation are greatly appreciated.
+Fully self-contained Google Colab notebooks, based on the Jupyter notebooks, are also available. These notebooks require no downloads, offering a convenient and accessible way to explore the material. Links:
+  - [DD session 1](https://colab.research.google.com/drive/1I1ORC8PAWCpM8HQzW3tEAf1A924DFuD6#scrollTo=f02d9130-3198-4900-a382-9056897901f7)
+  - [DD session 2](https://colab.research.google.com/drive/1tMaFwEGd27zwYbs8XHqfPTCeOotDaipy#scrollTo=CCE3IMWKpmKG)
+  - [DD session 3](https://colab.research.google.com/drive/1i0TPtc9gJwDNPm9BSH155uJEfJ6Mcp9J#scrollTo=CCE3IMWKpmKG)
+  - [Full DD session](https://colab.research.google.com/drive/1w63SGFggTDcwUbPM6m8LtE3RuWWZ66RC#scrollTo=f02d9130-3198-4900-a382-9056897901f7)
+  - [FEM session](https://colab.research.google.com/drive/1_Zb-W7mjuLjIyOC_xDnqaGa-0zTh-Zff#scrollTo=o4UXsXWGTejT) (tutorial of [pyLabFEA](https://github.com/AHartmaier/pyLabFEA))
+  - [Coupled DD+FEM session](https://colab.research.google.com/drive/1G5okYitqq5SvVCaGI-zf1om0v25BCESr#scrollTo=LAzTcysNxsG4) (coupling with [pyLabFEA](https://github.com/AHartmaier/pyLabFEA))
 
 ## Dependencies
 
-pyLabDD requires the following packages as imports:
+dd2dpy requires the following packages as imports:
 
  - [NumPy](http://numpy.scipy.org) for array handling
  - [MatPlotLib](https://matplotlib.org/) for graphical output
  - [fmodpy](https://pypi.org/project/fmodpy/) for embedding of faster Fortran subroutines for PK force calculation (optional)
 
-## Versions
-
- - v1.0: Initial version (with F90 subroutine)
- - v1.1: Pure Python version (with optional F90 subroutines)
-
 ## License
 
-The pyLabDD package comes with ABSOLUTELY NO WARRANTY. This is free
+The dd2dpy package is based off of [pyLabDD](https://github.com/AHartmaier/pyLabDD), which comes with ABSOLUTELY NO WARRANTY. This is free
 software, and you are welcome to redistribute it under the conditions of
 the GNU General Public License
 ([GPLv3](http://www.fsf.org/licensing/licenses/gpl.html))
