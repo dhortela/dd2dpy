@@ -67,7 +67,6 @@ Fully self-contained Google Colab notebooks, based on the Jupyter notebooks, are
   - [DD session 1](https://colab.research.google.com/drive/1I1ORC8PAWCpM8HQzW3tEAf1A924DFuD6#scrollTo=f02d9130-3198-4900-a382-9056897901f7)
   - [DD session 2](https://colab.research.google.com/drive/1tMaFwEGd27zwYbs8XHqfPTCeOotDaipy#scrollTo=CCE3IMWKpmKG)
   - [DD session 3](https://colab.research.google.com/drive/1i0TPtc9gJwDNPm9BSH155uJEfJ6Mcp9J#scrollTo=CCE3IMWKpmKG)
-  - [Full DD session](https://colab.research.google.com/drive/1w63SGFggTDcwUbPM6m8LtE3RuWWZ66RC#scrollTo=f02d9130-3198-4900-a382-9056897901f7)
   - [FEM session](https://colab.research.google.com/drive/1_Zb-W7mjuLjIyOC_xDnqaGa-0zTh-Zff#scrollTo=o4UXsXWGTejT) (tutorial of [pyLabFEA](https://github.com/AHartmaier/pyLabFEA))
   - [Coupled DD+FEM session](https://colab.research.google.com/drive/1G5okYitqq5SvVCaGI-zf1om0v25BCESr#scrollTo=LAzTcysNxsG4) (coupling with [pyLabFEA](https://github.com/AHartmaier/pyLabFEA))
 
